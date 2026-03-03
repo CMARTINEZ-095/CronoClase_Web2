@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+//import { useState } from 'react'
 import './App.css'
 
 import { MainView } from './pages/MainView'
@@ -14,13 +14,9 @@ function App() {
 
   return (
 
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<MainView />} />
-        <Route path="/panel-carga" element={<PanelCargaActividades />} />
-      </Routes>
-    </BrowserRouter>
+     //<MainView/>
 
+    <PanelCargaActividades/>
     
   )
 }

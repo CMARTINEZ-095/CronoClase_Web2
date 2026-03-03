@@ -1,29 +1,27 @@
 import "../styles/PanelCargaActividades.css";
 import { PanelMomento } from "../components/PanelMomento";
-
 import NavBar from "../components/NavBar";
 import { Footer } from "../components/Footer";
 
-
-
 export function PanelCargaActividades() {
-    return (
-        <div className="PanelCargaActividadesContainer">
-            <NavBar />
-            <main className="PanelCargaActividades">
-                <h2>Panel de carga de Actividades</h2>
-                <div>
-                    <PanelMomento />
-                    <PanelMomento />
-                    <PanelMomento />
-                </div>
+  return (
+    <div className="page-container">
+      <NavBar />
 
+      
+      <main className="panel-container">
+        <h1 className="panel-title">
+          Panel de Carga de Actividades
+        </h1>
 
-            </main>
+        <div className="momentos-wrapper">
+          <PanelMomento />
+          <PanelMomento />
+          <PanelMomento />
+        </div>
+      </main>
 
-            <Footer />
-
-        </div >
-    );
+      <Footer />
+    </div>
+  );
 }
-

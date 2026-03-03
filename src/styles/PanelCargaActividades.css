@@ -1,28 +1,42 @@
-.PanelCargaActividades{
-    display: flex;
-    flex-direction: column; /* Asegura que el h2 esté encima del div */
-    align-items: center; /* Centra el contenido horizontalmente */
-    min-height: 100vh;       /* ocupa toda la altura de la pantalla */
-    width: 100%;
-    padding: 2rem 1rem;      /* espacio para que no pegue a los bordes */
-    box-sizing: border-box;
-    font-family: "Rhodium Libre", serif;
+/* Asegura que la app pueda ocupar toda la altura */
+html, body, #root {
+  height: 100%;
+  margin: 0;
 }
 
-.PanelCargaActividades h2 {
-  text-align: center; /* Centra el texto del h2 */
-  margin-bottom: 1rem; /* Espaciado entre el h2 y el div */
-}
-
-.PanelCargaActividades > div:first-of-type {
+/* Contenedor general de la página */
+.page-container {
+  min-height: 100vh;
   display: flex;
-  justify-content: center; /* Centra los componentes horizontalmente */
-  align-items: center; /* Centra los componentes verticalmente */
-  gap: 1rem; /* Espaciado entre los componentes */
-  flex: 1; /* Expande para ocupar el espacio disponible */
+  flex-direction: column;
 }
 
-.PanelCargaActividades > div:last-of-type {
-  width: 100%;
+/* Main ocupa el espacio entre navbar y footer */
+.panel-container {
+  flex: 1; /* empuja el footer abajo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+  font-family: "Rhodium Libre", serif;
+  gap: 2rem;
+  margin-top: 120px;
 }
 
+/* Título */
+.panel-title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #493d9e;
+  margin: 0;
+}
+
+/* Contenedor de los PanelMomento */
+.momentos-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap; /* importante para responsive */
+}

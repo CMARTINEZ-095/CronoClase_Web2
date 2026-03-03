@@ -1,9 +1,31 @@
-.mainViewContainer {
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+.page-container {
+  min-height: 100vh;
   display: flex;
-  justify-content: center; /* centra horizontalmente */
-  align-items: center; /* lo deja arriba pero centrado */
-  min-height: 100vh;       /* ocupa toda la altura de la pantalla */
-  width: 100%;
-  padding: 8rem 1rem 2rem 1rem;      /* compensación para NavBar fijo + margen */
-  box-sizing: border-box;
+  flex-direction: column;
+}
+
+.mainViewContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8rem 1rem 2rem 1rem;
+  gap: 2rem;
+}
+
+.main-title {
+  font-size: 4rem;
+  font-family: "Vibur", cursive;
+  
+  font-style: normal;
+
+  
+  color: #493d9e;
+  margin: 0px;
+  
 }
