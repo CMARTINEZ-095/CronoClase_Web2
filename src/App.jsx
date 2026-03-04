@@ -14,9 +14,9 @@ function App() {
 
   return (
 
-     //<MainView/>
+     <MainView/>
 
-    <PanelCargaActividades/>
+    //<PanelCargaActividades/>
     
   )
 }
