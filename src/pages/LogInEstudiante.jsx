@@ -1,8 +1,9 @@
 import React from "react";
 import "../styles/StyleLogInEstudiante.css";
 import { useState, useEffect } from "react";
-import { end_points } from "../services/api";
-import { alertaGeneral } from "../helpers/alerts";
+import { end_points, fakeRoutes } from "../services/api";
+import { alertaGeneral, redirectAlert } from "../helpers/alerts";
+import { saveLocalStorage } from "../helpers/local-storage";
 
 export function LogInEstudiante() {
   /* [0,1] = useState('','')*/
@@ -12,9 +13,7 @@ export function LogInEstudiante() {
   const [estudiantes, setUserEstudiantes] = useState([]);
 
   function getEstudiantes() {
-    //ojo esto queda a´si por el cambio que se hizo en el vite.config
-
-    fetch("http://localhost:5173/api/estudiante")
+    fetch(fakeRoutes.logInEstudiante)
       .then((response) => response.json())
       .then((data) => setUserEstudiantes(data))
       .catch((error) => console.log(error));
@@ -22,30 +21,33 @@ export function LogInEstudiante() {
 
   useEffect(() => {
     getEstudiantes();
-
   }, []);
 
+  function findUser() {
+    let foundEstudiante = estudiantes.find(
+      (item) =>
+        userEstudiante == item.email && passwordEstudiante == item.documentoID,
+    );
 
-  function findUser(){
-  let foundEstudiante = estudiantes.find((item)=> userEstudiante == item.email && passwordEstudiante == item.documentoID)
-
-  return foundEstudiante
+    return foundEstudiante;
   }
-
-  
 
   function signInEstudiante(e) {
     e.preventDefault();
 
-
-
     if (userEstudiante === "" || passwordEstudiante === "") {
-      return alertaGeneral("Error","Contraseña o email vacío", "warning");
+      return alertaGeneral("Error", "Contraseña o email vacío", "warning");
     } else if (findUser()) {
-      return alertaGeneral(`Hola ${findUser().nombre}`,"Bienvenido", "success");
-    } else if(findUser()== undefined){
-      return alertaGeneral("Error","Contraseña o email invalidos", "error");
-
+      saveLocalStorage("estudiante", findUser() );
+      redirectAlert(
+        `Hola ${findUser().nombre}`,
+        "Bienvenido, será redireccionado a su calendario",
+        "/calendario-estudiante",
+        "success",
+      );
+      return;
+    } else if (findUser() == undefined) {
+      return alertaGeneral("Error", "Contraseña o email invalidos", "error");
     }
   }
 

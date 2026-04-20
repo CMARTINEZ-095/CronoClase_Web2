@@ -6,3 +6,11 @@ export let end_points={
     //OJO CON ESTA url
     estudiantes:`${URL_BASE}estudiante`
 }
+
+
+export let fakeRoutes = {
+
+    logInEstudiante: "https://raw.githubusercontent.com/GGP113/CronoClase_Web2/refs/heads/develop/creacion-registros/src/data/estudiantes.json"
+
+
+}
